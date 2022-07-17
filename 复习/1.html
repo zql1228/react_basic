@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script text="text/javascript">
+        class Person {
+            constructor(name,age){
+                //this 类的实例对象
+                this.name=name
+                this.age=age
+            }
+            speak(){
+                //speak方法放在类的原型对象上
+                //通过Persons实例调用speak的，this就是Person实例
+                console.log(`我叫${this.name},我的年龄是${this.age}`)
+            }
+        }
+        // const p1=new Person('tom',18)
+        // const p2=new Person('juery',33)
+        // console.log(p1,p2)
+        class Student extends Person{
+            constructor(name,age,grade){
+                super(name,age)
+                this.grade=grade
+            }
+            study(){
+                console.log('我很努力学习')
+            }
+        }
+        const s1=new Student('小张',21,'大四')
+// 类中的构造器不是必须写的，要对属性进行初始化是，才需要用
+ //如果A类继承b类，且调用了构造器函数，那A类构造器中必须调用super
+ //类中的方法都在原型对象上
+    </script>
+</body>
+</html>

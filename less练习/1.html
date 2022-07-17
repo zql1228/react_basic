@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- <link rel="stylesheet/less" href="./1.less"> -->
+</head>
+<style text="text/less">
+
+</style>
+<body>
+    <div class="container">
+        <div class="div">1111111111111</div>
+    </div>
+    <p class="p">
+    </p>
+    <script src="./less.min.js">
+    </script>
+    <script text="text/javascript">
+        // var d1="2021-5-1" 
+        // var d2="2022-3-1"
+//         console.log(src1,src2)
+//       src3= src1.setFullYear(src1.getFullYear()+1)
+//       src4= src1.setMonth(src1.getMonth()+6)
+//        console.log(src3,src4)
+// //         var d = new Date('2021-12-17');
+// // d.setMonth(d.getMonth() + 6); //加半年
+// // d.setFullYear(d.getFullYear() + 1);  //加一年
+// // d.setMonth(d.getMonth() + 12); //加一年
+//         if(src3<src2.getTime()){
+//             console.log(">1年")
+//         }else{
+//             if(src4<src2.getTime()){
+//                 console.log(">半年")
+//             }else{//小于半年
+
+//             }
+//         }
+//两个日期相差几个月
+
+function  dateMinus(d1, d2){
+     d1=d1.split("-")
+     d2=d2.split("-")
+	var m1 = parseInt(d1[1].replace(/^0+/, "")) + parseInt(d1[0]) * 12;
+             var m2 = parseInt(d2[1].replace(/^0+/, "")) + parseInt(d2[0]) * 12;
+	var diff = m2 - m1;
+	
+	return diff;
+}
+  const result=  dateMinus("2021-06-1","2022-03-1")
+  console.log(result)
+    </script>
+</body>
+</html>

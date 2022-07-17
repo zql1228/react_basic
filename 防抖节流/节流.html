@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+   <button id="button">点击</button>
+    </div>
+    <script text="text/javascript">
+        function callback(){
+            console.log("执行一次")
+        }
+        function throttle(delay,callback){
+            let timer
+            //使用闭包保存timer变量
+            return function(){  
+                if(!timer){
+                    timer=setTimeout(()=>{
+                    callback()//1秒后才执行，一段时间内，不管按点击多少次，都只执行一次
+            },delay)
+                }                    
+            }
+        }
+        const fn=throttle(1000,callback)      
+        document.getElementById('button').onclick=function(){     
+          fn()
+        }
+    </script>
+</body>
+</html>

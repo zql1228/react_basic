@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+    <input type="text"  id="input">
+    </div>
+    <script text="text/javascript">
+        function callback(value){
+            console.log(value)
+        }
+        function debounce(delay,callback){
+            let timer
+            //使用闭包保存timer变量
+            return function(value){  
+                clearTimeout(timer)
+                timer=setTimeout(()=>{
+                    callback(value)
+            },delay)
+            }
+        }
+        const fn=debounce(1000,callback)      
+        document.getElementById('input').onkeyup=function(e){
+     
+          fn(e.target.value)
+        }
+    </script>
+</body>
+</html>

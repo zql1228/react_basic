@@ -1,0 +1,38 @@
+@bg:#faf;
+@wth1:200px;
+@wth2:100px;
+@cor:color;
+// @url:"../image/1.png";
+.container{
+    width: @wth1;
+    height:@wth1;
+    background: @bg;
+    div.div{
+    width: @wth2;
+    height:@wth2;
+    background: rgb(235, 61, 61);
+    @{cor}:#fff
+    }
+}
+.wh{
+    width:wth1;
+    height: wth1;
+}
+.bg{
+    color: @bg;
+}
+// 混合
+// 混合带参数
+.p{
+//    background-image: url('@{url}');
+   .wh
+   .bg(blue)
+}
+// 混合带参数，参数可以有默认值
+.border(@b:10px){
+    border:@b solid #faf
+}
+.box{
+    height:200px;
+.border()
+}

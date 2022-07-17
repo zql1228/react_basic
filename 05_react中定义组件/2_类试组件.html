@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="test"></div>
+    <iframe src="" frameborder="0"></iframe>
+    <!-- 引入react核心库 -->
+    <script type="text/javascript" src="../js/react.development.js"></script>
+    <!-- 引入react扩展库  支持react操作dom-->
+    <script type="text/javascript" src="../js/react-dom.development.js"></script>
+    <script src="../js/babel.min.js"></script>
+    <script type="text/babel">
+       class MyComponent extends React.Component{
+           render(){//render放在MyComponent原型对象上，供 组件实例使用
+        //this ？ this是MyComponent类的实例对象
+               return <h2 >我是用类定义的组件(用于复杂组建的定义)</h2>
+           }
+       }  
+       ReactDOM.render(<MyComponent/>,document.getElementById('test'))  
+       /*
+       1.React解析组件标签，找到了MyComponent组件
+       2.发现组件式类定义的，随后new出来该类的实例，并通过该实例调用原型上的render方法
+        3.将render返回的虚拟dom转为真实dom,然后渲染页面
+       */
+    </script>
+</body>
+</html>
