@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="test">
+
+    </div>
+    <!-- 引入react核心库 -->
+    <script type="text/javascript" src="../js/react.development.js"></script>
+    <!-- 引入react扩展库  支持react操作dom-->
+    <script type="text/javascript" src="../js/react-dom.development.js"></script>
+    <script src="../js/babel.min.js"></script>
+    <script type="text/babel">
+       class Weather extends React.Component{
+        //构造器调用一次
+           constructor(props){
+            //此处的this指向实例对象
+            super(props)
+            this.state={ishot:true} //初始化状态
+            this.changeWeather=this.changeWeather.bind(this)
+           }
+           //render 调用1+n次
+           render(){//render放在MyComponent的组建实例上
+        //this ？ this是MyComponent的组件实例
+        const {ishot}=this.state
+               return <h2 onClick={this.changeWeather}>今天天气很{ishot ? '炎热':'凉爽'}</h2>
+           }
+         changeWeather(){
+            //changeWeather放哪里？放在Weatherd的原型对象上，供实例使用
+            //通过Weather实例调用changeweather,changeWeather中的this就是Weather的实例
+            //由于changeWeather是作为onClick的h回调，所以不是通过实例调用的，是直接调用
+            //类中的方法默认开启严格模式，所以changeWeather中的this未undefined
+      
+        //状态（state）不可以直接更改 必须通过setState更新，且是合并，不是替换
+        //this.state.ishot=!this.state.ishot
+        this.setState({ishot:!this.state.ishot})
+         }
+       }  
+       ReactDOM.render(<Weather/>,document.getElementById('test'))  
+    //    function dome(){
+        // console.log(that.state.ishot);
+        //     console.log('标签被点击了');
+        //    }
+    </script>
+</body>
+</html>
