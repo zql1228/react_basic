@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style text="text/css">
+    .list{
+        width: 200px;
+        height: 150px;
+        background: #faff;
+        overflow-y: scroll;
+    }
+    .li{
+        height: 30px;
+    }
+</style>
+<body>
+    <div id="test"></div>
+    <div id="test2"></div>
+    <!-- 引入react核心库 -->
+    <script type="text/javascript" src="../js/17.0.1/react.development.js"></script>
+    <!-- 引入react扩展库  支持react操作dom-->
+    <script type="text/javascript" src="../js/17.0.1/react-dom.development.js"></script>
+    <script src="../js/17.0.1/babel.min.js"></script>
+    <!--引入prop-types 用于对标签组件进行限制 -->
+    <script src="../js/prop-types.js"></script>
+    <script type="text/babel">
+        class List extends React.Component{
+            state={newsArr:[]}         
+            //组件挂载完毕
+            componentDidMount(){
+                setInterval(()=>{
+                    const {newsArr}=this.state
+                    const news='新闻'+(newsArr.length+1)
+                    this.setState({newsArr:[news,...newsArr]})
+                },1000)
+              
+            }
+            getSnapshotBeforeUpdate(prevProps, prevState){
+               
+                
+                return  this.refs.list.scrollHeight
+            }
+            //组件更新完毕的钩子
+            componentDidUpdate(prevProps, prevState,height){
+                this.refs.list.scrollTop+=this.refs.list.scrollHeight-height
+            }
+            //初始化渲染，状态更新后
+            render(){   
+                console.log('---render');            
+                return (
+                    <div className="list" ref="list">
+                        {this.state.newsArr.map((item,i)=>{return <div key={i} className="li">{item}</div>})}
+                    </div>
+                    )
+            }
+        }
+        ReactDOM.render(<List count={199} />,document.getElementById('test'))
+    </script>
+</body>
+</html>
