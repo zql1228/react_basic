@@ -42,17 +42,17 @@
             getSnapshotBeforeUpdate(prevProps, prevState){
                
                 
-                return  this.refs.list.scrollHeight
+                return  this.listRef.scrollHeight
             }
             //组件更新完毕的钩子
             componentDidUpdate(prevProps, prevState,height){
-                this.refs.list.scrollTop+=this.refs.list.scrollHeight-height
+                this.listRef.scrollTop+=this.listRef.scrollHeight-height
             }
             //初始化渲染，状态更新后
             render(){   
                 console.log('---render');            
                 return (
-                    <div className="list" ref="list">
+                    <div className="list" ref={(c)=>{this.listRef=c}}>
                         {this.state.newsArr.map((item,i)=>{return <div key={i} className="li">{item}</div>})}
                     </div>
                     )
